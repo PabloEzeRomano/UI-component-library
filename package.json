@@ -1,0 +1,36 @@
+{
+  "name": "ui-component-library",
+  "version": "0.1.0",
+  "description": "UI for React",
+  "main": "dist/index.js",
+  "style": "dist/styles.css",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "gulp-sass": "^3.1.0",
+    "nwb": "^0.18.8",
+    "prop-types": "^15.5.10",
+    "react": "^15.4.2"
+  },
+  "peerDependencies": {
+    "react": ""
+  },
+  "devDependencies": {
+    "babel-plugin-css-modules-transform": "^1.2.1",
+    "babel-plugin-inline-react-svg": "^0.2.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-postcss": "^6.3.0",
+    "postcss": "^5.2.12",
+    "postcss-modules": "^0.6.4",
+    "precss": "^1.4.0",
+    "react": "^15.4.2",
+    "serve": "^4.0.1"
+  }
+}

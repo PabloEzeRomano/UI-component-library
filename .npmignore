@@ -1,0 +1,7 @@
+node_modules
+src
+.npmignore
+.gitignore
+.idea
+gulpfile.js
+README.md
