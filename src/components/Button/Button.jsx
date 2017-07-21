@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Button.scss';
 
 const Button = ({ buttonStyle, buttonText }) => (
-  <button className={buttonStyle}>
+  <button className={`'button-color ${buttonStyle}`}>
     {buttonText}
   </button>
 );

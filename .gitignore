@@ -4,3 +4,4 @@ npm-debug.log*
 dist
 storybook-static
 .idea/
+yarn-error.logq

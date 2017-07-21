@@ -3,34 +3,55 @@
   "version": "0.1.0",
   "description": "UI for React",
   "main": "dist/index.js",
-  "style": "dist/styles.css",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "gulp build"
+    "build": "jest && gulp build",
+    "build:watch": "gulp build:watch",
+    "lint": "gulp lint",
+    "test": "jest"
   },
   "dependencies": {
-    "gulp-sass": "^3.1.0",
-    "nwb": "^0.18.8",
+    "enzyme": "^2.9.1",
     "prop-types": "^15.5.10",
-    "react": "^15.4.2"
+    "react": "^15.6.1"
+  },
+  "jest": {
+    "transform": {
+      ".*": "<rootDir>/node_modules/jest-css-modules"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
+    "unmockedModulePathPatterns": [
+      "./node_modules/react"
+    ]
   },
   "peerDependencies": {
     "react": ""
   },
   "devDependencies": {
-    "babel-plugin-css-modules-transform": "^1.2.1",
-    "babel-plugin-inline-react-svg": "^0.2.0",
-    "del": "^2.2.2",
+    "babel-jest": "^20.0.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-concat-css": "^2.3.0",
-    "gulp-postcss": "^6.3.0",
-    "postcss": "^5.2.12",
-    "postcss-modules": "^0.6.4",
-    "precss": "^1.4.0",
-    "react": "^15.4.2",
-    "serve": "^4.0.1"
+    "gulp-eslint": "^4.0.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^3.1.0",
+    "jest": "^20.0.4",
+    "jest-css-modules": "^1.1.0",
+    "jest-enzyme": "^3.6.0",
+    "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1"
   }
 }

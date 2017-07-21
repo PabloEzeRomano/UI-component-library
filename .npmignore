@@ -5,3 +5,4 @@ src
 .idea
 gulpfile.js
 README.md
+yarn-error.log

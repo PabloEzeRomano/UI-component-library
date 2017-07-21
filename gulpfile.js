@@ -1,43 +1,39 @@
+/* eslint-disable no-useless-escape */
 const gulp = require('gulp');
-const del = require('del');
-
-var sass = require('gulp-sass');
-
 const babel = require('gulp-babel');
+const eslint = require('gulp-eslint');
+const replace = require('gulp-replace');
+const sass = require('gulp-sass');
 
-// gulp.task('clean:dist', () => {
-//   return del([
-//     'dist'
-//   ]);
-// });
-
-gulp.task('copy', function () {
-  return gulp.src('./src/**/*.{gif,png,jpg,svg}')
+gulp.task('babel', () => {
+  gulp.src(['./src/**/*.js*'])
+    .pipe(babel())
+    .pipe(replace('.scss', '.css'))
     .pipe(gulp.dest('./dist'));
 });
 
-//Watch task
-gulp.task('default',function() {
-  gulp.watch('src/**/*.scss',['styles']);
+gulp.task('eslint', () => {
+  gulp.src(['./src/**/*.js', '!node_modules/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
-gulp.task('sass', function () {
-  return gulp.src('./src/**/*.scss')
+gulp.task('scss', () => {
+  gulp.src('./src/**/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+gulp.task('lint:watch', () => {
+  gulp.watch(['./src/**/*.js', '!node_modules/**'], ['lint']);
 });
 
-gulp.task('babel', () => {
-  gulp.src(['./src/**/*.js', './src/**/*.jsx'])
-    .pipe(babel({
-      presets: ['react', 'stage-1', 'es2015'],
-    }))
-    .pipe(gulp.dest('./dist'));
+gulp.task('scss:watch', () => {
+  gulp.watch('./src/**/*.scss', ['scss']);
 });
 
-gulp.task('build', ['copy', 'babel', 'sass']);
-gulp.task('default', ['build']);
+gulp.task('build', ['babel', 'scss']);
+gulp.task('scss:watch', ['scss:watch']);
+gulp.task('lint', ['eslint']);
+gulp.task('lint:watch', ['lint:watch']);
